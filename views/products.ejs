@@ -1,0 +1,58 @@
+<%- include("./partials/head.ejs") %>
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="products display">
+    <h2>All Products</h2>
+
+    <% if (products.length > 0) { %>
+        <% products.forEach(product => { %>
+            <h3 class="name">Name: <%= product.name %></h3>
+            <p class="manufacturer">Manufacturer: <%= product.manufacturer %></p>
+            <p class="style">Style: <%= product.style %></p>
+            <p class="purchasePrice">Purchase Price: $<%= product.purchasePrice %></p>
+            <p class="salePrice">Sale Price: $<%= product.salePrice %></p>
+            <p class="qtyOnHand">Quantity on Hand: <%= product.qtyOnHand %></p>
+            <p class="comissionPercentage">Comission Percentage: <%= product.comissionPercentage %>%</p>
+            <P></P>
+        <% }) %>
+     <% } else { %>
+        <p>There are no products in the system.</p>
+    <% } %>
+    <button class ="updateButton" onclick="showUpdate()">Update</a>
+</div>
+
+<div class="updateForm">
+    <form action="" method="post">
+        <label for="oldName">Old Name: </label>
+        <input type="text" id="oldName" name="oldName" required>
+        <label for="name">New Name: </label>
+        <input type="text" id="name" name="name" required>
+        <label for="manufacturer">Manufacturer: </label>
+        <input type="text" id="manufacturer" name="manufacturer" required>
+        <label for="style">Style: </label>
+        <input type="text" id="style" name="style" required>
+        <label for="purchasePrice">Purchase Price: </label>
+        <input type="number" id="purchasePrice" name="purchasePrice" required>
+        <label for="salePrice">Sale Price: </label>
+        <input type="number" id="salePrice" name="salePrice" required>
+        <label for="qtyOnHand">Quantity on Hand: </label>
+        <input type="number" id="qtyOnHand" name="qtyOnHand" required>
+        <label for="comissionPercentage">Commission Percentage: </label>
+        <input type="number" id="comissionPercentage" name="comissionPercentage" step=".01" min="0" max=".99" required>
+        <button class="submitButton">Submit</button>
+    </form>
+</div>
+
+<script>
+    let updateForm = document.querySelector(".updateForm");
+    let updateButton = document.querySelector(".updateButton");
+    let submitButton = document.querySelector(".submitButton");
+
+    updateForm.style.display = "none";
+    function showUpdate() {
+        updateForm.style.display = "block";
+    }
+</script>
+
+</body>

@@ -1,0 +1,22 @@
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="Q1report">
+        <h2>Q1 Commission Report</h2>
+        <% let Q1startDate = new Date(2022, 0, 1, 0, 0, 0, 0) %>
+        <%let Q1EndDate = new Date(2022, 2, 31, 23, 59, 59, 0); %>
+        <% if (sales.length > 0) { %>
+            <% sales.forEach(sale => { %>
+                <% if (sale.salesDate >= Q1startDate && sale.salesDate <= Q1EndDate) { %>
+                    <p class="Product">Product: <%= sale.product %></p>
+                    <p class="Salesperson">Salesperson: <%= sale.salesperson %></p>
+                    <p class="Customer">Customer: <%= sale.customer %></p>
+                    <p class="salesDate">Sale Date: <%= sale.salesDate.toDateString() %></p>
+                    <br>
+                <% } %>
+            <% }) %>
+         <% } else { %>
+            <p>There are no sales in the system.</p>
+        <% } %>
+    </div>
+</body>

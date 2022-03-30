@@ -1,0 +1,47 @@
+<%- include("./partials/head.ejs") %>
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="sales display">
+    <h2>All Sales</h2>
+
+    <% if (sales.length > 0) { %>
+        <% sales.forEach(sale => { %>
+            <h3 class="Product">Product: <%= sale.product %></h3>
+            <p class="Salesperson">Salesperson: <%= sale.salesperson %></p>
+            <p class="Customer">Customer: <%= sale.customer %></p>
+            <p class="salesDate">Sale Date: <%= sale.salesDate.toDateString() %></p>
+
+
+        <% }) %>
+     <% } else { %>
+        <p>There are no sales in the system.</p>
+    <% } %>
+    <button class ="createButton" onclick="showUpdate()">Create a Sale</a>
+</div>
+
+<div class="createForm">
+    <form action="" method="post">
+        <label for="product">Product: </label>
+        <input type="text" id="product" name="product" required>
+        <label for="salesperson">Salesperson: </label>
+        <input type="text" id="salesperson" name="salesperson" required>
+        <label for="customer">Customer: </label>
+        <input type="text" id="customer" name="customer" required>
+        <label for="salesDate">Purchase Date: </label>
+        <input type="date" id="salesDate" name="salesDate" required>
+        <button class="submitButton">Submit</button>
+    </form>
+</div>
+
+<script>
+    let createForm = document.querySelector(".createForm");
+    let createButton = document.querySelector(".createButton");
+    let submitButton = document.querySelector(".submitButton");
+
+    createForm.style.display = "none";
+    function showUpdate() {
+        createForm.style.display = "block";
+    }
+</script>
+</body>

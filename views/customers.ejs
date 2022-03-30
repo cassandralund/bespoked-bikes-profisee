@@ -1,0 +1,19 @@
+<%- include("./partials/head.ejs") %>
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="customers display">
+    <h2>All Customers</h2>
+
+    <% if (customers.length > 0) { %>
+        <% customers.forEach(customer => { %>
+            <h3 class="Name">Name: <%= customer.firstName + " " + customer.lastName %></h3>
+            <p class="Address">Address: <%= customer.address %></p>
+            <p class="Phone">Phone Number: <%= customer.phone %></p>
+            <p class="startDate">Start Date: <%= customer.startDate.toDateString() %></p>
+        <% }) %>
+     <% } else { %>
+        <p>There are no customers in the system.</p>
+    <% } %>
+</div>
+</body>
